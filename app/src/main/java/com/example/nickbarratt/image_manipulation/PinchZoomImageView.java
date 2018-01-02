@@ -1,4 +1,4 @@
-package com.example.nickbarratt.test1;
+package com.example.nickbarratt.image_manipulation;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,9 +10,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import android.widget.ImageView;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -25,7 +23,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
     private int mImageWidth;
     private int mImageHeight;
     private final static float mMinZoom = 1.f;
-    private final static float mMaxZoom = 3.f;
+    private final static float mMaxZoom = 2.75f;
     private float mScaleFactor = 1.f;
     private ScaleGestureDetector mScaleGestureDetector;
     private final static int NONE = 0;

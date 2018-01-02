@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nickbarratt.test1.Test1MainActivity">
+    tools:context="com.example.nickbarratt.image_manipulation.Test1MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -13,7 +13,7 @@
         android:layout_height="150dp"
         android:layout_centerInParent="true" />
 
-    <com.example.nickbarratt.test1.PinchZoomImageView
+    <com.example.nickbarratt.image_manipulation.PinchZoomImageView
         android:id="@+id/pinchZoomImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
