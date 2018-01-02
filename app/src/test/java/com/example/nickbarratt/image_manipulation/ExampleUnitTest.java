@@ -1,4 +1,4 @@
-package com.example.nickbarratt.test1;
+package com.example.nickbarratt.image_manipulation;
 
 import org.junit.Test;
 

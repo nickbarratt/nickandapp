@@ -1,4 +1,4 @@
-package com.example.nickbarratt.test1;
+package com.example.nickbarratt.image_manipulation;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
