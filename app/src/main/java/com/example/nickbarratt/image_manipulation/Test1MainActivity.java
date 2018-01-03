@@ -25,7 +25,7 @@ import java.io.IOException;
 public class Test1MainActivity extends AppCompatActivity {
 
     private ImageView mImageView;
-    private PinchZoomImageView mPinchZoomImageView;
+    private com.example.nickbarratt.image_manipulation.PinchZoomImageView mPinchZoomImageView;
     private Uri mImageUri;
     private Animator mCurrentAnimator;
     private int mLongAnimationDuration;
