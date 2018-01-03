@@ -25,7 +25,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
     private int mImageWidth;
     private int mImageHeight;
     private final static float mMinZoom = 1.f;
-    private final static float mMaxZoom = 3.f;
+    private final static float mMaxZoom = 7.f;
     private float mScaleFactor = 1.f;
     private ScaleGestureDetector mScaleGestureDetector;
     private final static int NONE = 0;
