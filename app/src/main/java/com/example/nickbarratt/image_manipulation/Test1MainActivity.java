@@ -99,6 +99,16 @@ public class Test1MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+     //   super.onBackPressed();
+
+        Intent intent=new Intent(this, Test1MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    //    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
     private Bitmap getBitmapFromUri(Uri uri) throws IOException {
         ParcelFileDescriptor parcelFileDescriptor = getContentResolver().openFileDescriptor(uri, "r" );
         FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
