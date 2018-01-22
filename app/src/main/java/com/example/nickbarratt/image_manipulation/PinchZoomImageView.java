@@ -1,16 +1,26 @@
 package com.example.nickbarratt.image_manipulation;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.PaintDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,6 +32,7 @@ import java.io.IOException;
 public class PinchZoomImageView extends android.support.v7.widget.AppCompatImageView {
 
     private Bitmap mBitmap;
+    private Bitmap mBitmapGraphics;
     private int mImageWidth;
     private int mImageHeight;
     private final static float mMinZoom = 1.f;
@@ -38,6 +49,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
     private float mTranslateY = 0;
     private float mPreviousTranslateX = 0;
     private float mPreviousTranslateY = 0;
+
 
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
 
@@ -109,6 +121,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
         super.onDraw(canvas);
 
         canvas.save();
+
         canvas.scale(mScaleFactor, mScaleFactor);
         if ((mTranslateX * -1) < 0) {
             mTranslateX = 0;
@@ -120,10 +133,24 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
         } else if ((mTranslateY * -1) > mImageHeight * mScaleFactor - getHeight()){
             mTranslateY = (mImageHeight * mScaleFactor - getHeight()) * -1;
         }
+
         canvas.translate(mTranslateX / mScaleFactor, mTranslateY / mScaleFactor);
-        //canvas.scale(mScaleFactor, mScaleFactor, mScaleGestureDetector.getFocusX(),  mScaleGestureDetector.getFocusY());
+     //   canvas.drawLine(10, 10, 90, 10, null);
         canvas.drawBitmap(mBitmap, 0, 0, null);
+      //  canvas.drawBitmap(mBitmapGraphics,0,0,null);
         canvas.restore();
+
+    //    Bitmap ourNewBitmap = Bitmap
+        //Canvas ourNewCanvas = new Canvas(ourNewBitmap);
+
+     //   canvas.drawRect(100,100,100,100, mPaint);
+
+//        canvas.drawBitmap(ourNewBitmap,0,0, null);
+  //      canvas.restore();
+
+      //         canvas.drawLine(10, 10, 90, 10, paint);
+
+
     }
 
     @Override
@@ -145,4 +172,23 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
             e.printStackTrace();
         }
     }
+
+
+/*
+    class DrawView extends View {
+        Paint mPaint = new Paint();
+        public DrawView(Context context) {
+            super(context);
+            mPaint.setColor(Color.BLUE);
+        }
+        @Override
+        public void onDraw(Canvas canvas) {
+            super.onDraw(canvas);
+
+        }
+    }
+
+*/
+
 }
+

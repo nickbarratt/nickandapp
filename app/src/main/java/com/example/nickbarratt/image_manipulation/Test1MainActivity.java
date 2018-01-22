@@ -4,18 +4,26 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -29,6 +37,9 @@ public class Test1MainActivity extends AppCompatActivity {
     private Uri mImageUri;
     private Animator mCurrentAnimator;
     private int mLongAnimationDuration;
+    private Button mButton;
+    private ShapeDrawable mDrawable;
+   // private Canvas mCanvas;
 
     private static final int REQUEST_OPEN_RESULT_CODE = 0;
 
@@ -39,6 +50,14 @@ public class Test1MainActivity extends AppCompatActivity {
 
         mImageView = findViewById(R.id.imageView);
         mPinchZoomImageView = findViewById(R.id.pinchZoomImageView);
+        mButton = findViewById(R.id.button);
+
+   /*     mButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+               // Toast.makeText(getApplicationContext(), "Button Pressed", Toast.LENGTH_SHORT).show();
+                //drawSomething();
+            }
+        });*/
 
         mImageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -57,6 +76,24 @@ public class Test1MainActivity extends AppCompatActivity {
         intent.setType("image/*");
         startActivityForResult(intent, REQUEST_OPEN_RESULT_CODE);
 
+    }
+
+    public void btnClick(View v){
+
+        Toast.makeText(getApplicationContext(), "Button Pressed", Toast.LENGTH_SHORT).show();
+
+        //   Bitmap mBitmapGraphics = BitmapFactory.decodeResource(getResources(),R.drawable.img1);//assign your bitmap;
+        /*Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(),R.drawable.img2);//assign your bitmap;
+        Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(),R.drawable.img3);//assign your bitmap;
+        Bitmap bitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.img4);//assign your bitmap;
+
+
+        Bitmap[] listBmp= {bitmap1, bitmap2, bitmap3, bitmap4};
+
+        Bitmap mergedImg= mergeMultiple(listBmp);
+
+        img.setImageBitmap(mergedImg);
+*/
     }
 
     @Override
@@ -190,4 +227,6 @@ public class Test1MainActivity extends AppCompatActivity {
         mImageView.setAlpha(0.f);
         mPinchZoomImageView.setVisibility(View.VISIBLE);
     }
+
+
 }
