@@ -136,19 +136,10 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
 
         canvas.translate(mTranslateX / mScaleFactor, mTranslateY / mScaleFactor);
      //   canvas.drawLine(10, 10, 90, 10, null);
-        canvas.drawBitmap(mBitmap, 0, 0, null);
-      //  canvas.drawBitmap(mBitmapGraphics,0,0,null);
+      //  Bitmap mergedImg= mergeMultiple(mBitmap, mBitmapGraphics);
+    //    canvas.drawBitmap(mBitmap, 0, 0, null);
+        canvas.drawBitmap(mBitmapGraphics, 0, 0, null);
         canvas.restore();
-
-    //    Bitmap ourNewBitmap = Bitmap
-        //Canvas ourNewCanvas = new Canvas(ourNewBitmap);
-
-     //   canvas.drawRect(100,100,100,100, mPaint);
-
-//        canvas.drawBitmap(ourNewBitmap,0,0, null);
-  //      canvas.restore();
-
-      //         canvas.drawLine(10, 10, 90, 10, paint);
 
 
     }
@@ -173,22 +164,23 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
         }
     }
 
+    public void loadFrame(){
+        mBitmapGraphics = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+     //   mBitmapGraphics = Bit
 
-/*
-    class DrawView extends View {
-        Paint mPaint = new Paint();
-        public DrawView(Context context) {
-            super(context);
-            mPaint.setColor(Color.BLUE);
+        for(int x = 0; x < 100; x++)
+        {
+            for(int y = 0; y < 100; y++)
+            {
+                mBitmapGraphics.setPixel(x, y, android.support.v7.appcompat.R.color.material_blue_grey_800);
+            }
         }
-        @Override
-        public void onDraw(Canvas canvas) {
-            super.onDraw(canvas);
 
-        }
+        invalidate();
+        requestLayout();
     }
 
-*/
+
 
 }
 

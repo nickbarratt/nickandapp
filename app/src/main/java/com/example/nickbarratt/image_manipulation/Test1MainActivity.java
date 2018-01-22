@@ -81,19 +81,7 @@ public class Test1MainActivity extends AppCompatActivity {
     public void btnClick(View v){
 
         Toast.makeText(getApplicationContext(), "Button Pressed", Toast.LENGTH_SHORT).show();
-
-        //   Bitmap mBitmapGraphics = BitmapFactory.decodeResource(getResources(),R.drawable.img1);//assign your bitmap;
-        /*Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(),R.drawable.img2);//assign your bitmap;
-        Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(),R.drawable.img3);//assign your bitmap;
-        Bitmap bitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.img4);//assign your bitmap;
-
-
-        Bitmap[] listBmp= {bitmap1, bitmap2, bitmap3, bitmap4};
-
-        Bitmap mergedImg= mergeMultiple(listBmp);
-
-        img.setImageBitmap(mergedImg);
-*/
+        loadFrameGraphics();
     }
 
     @Override
@@ -228,5 +216,19 @@ public class Test1MainActivity extends AppCompatActivity {
         mPinchZoomImageView.setVisibility(View.VISIBLE);
     }
 
+    private void loadFrameGraphics() {
+        mPinchZoomImageView.loadFrame();
+        //   Bitmap mBitmapGraphics = BitmapFactory.decodeResource(getResources(),R.drawable.img1);//assign your bitmap;
+        /*Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(),R.drawable.img2);//assign your bitmap;
+        Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(),R.drawable.img3);//assign your bitmap;
+        Bitmap bitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.img4);//assign your bitmap;
+
+
+        Bitmap[] listBmp= {bitmap1, bitmap2, bitmap3, bitmap4};
+
+        Bitmap mergedImg= mergeMultiple(listBmp);
+
+        img.setImageBitmap(mergedImg);*/
+    }
 
 }
