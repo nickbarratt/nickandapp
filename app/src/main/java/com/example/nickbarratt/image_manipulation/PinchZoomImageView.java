@@ -147,8 +147,11 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
         }
 
         canvas.translate(mTranslateX / mScaleFactor, mTranslateY / mScaleFactor);
+
         canvas.drawBitmap(mBitmap, 0, 0, null);
-        canvas.drawCircle(400, 400, 100, mPaint);
+        canvas.drawRect(200, 200, 400, 400, mPaint);
+        canvas.drawCircle(400,400,100, mPaint);
+
         canvas.restore();
 
 

@@ -41,10 +41,6 @@ public class Test1MainActivity extends AppCompatActivity {
     private Button mButton;
     private ShapeDrawable mDrawable;
 
-
-
-   // private Canvas mCanvas;
-
     private static final int REQUEST_OPEN_RESULT_CODE = 0;
 
     @Override
@@ -55,15 +51,6 @@ public class Test1MainActivity extends AppCompatActivity {
         mImageView = findViewById(R.id.imageView);
         mPinchZoomImageView = findViewById(R.id.pinchZoomImageView);
         mButton = findViewById(R.id.button);
-
-
-
-   /*     mButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-               // Toast.makeText(getApplicationContext(), "Button Pressed", Toast.LENGTH_SHORT).show();
-                //drawSomething();
-            }
-        });*/
 
         mImageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
