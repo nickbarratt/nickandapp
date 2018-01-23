@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.PaintDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
@@ -57,10 +58,12 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
     private Paint mPaint = new Paint();
     private Paint mPaintText = new Paint(Paint.UNDERLINE_TEXT_FLAG);
     private Rect mRect = new Rect();
+    private Rect mRectF = new Rect();
     private Rect mBounds = new Rect();
     private int mColorBackground;
     private int mColorRectangle;
     private int mColorAccent;
+    private boolean mtoggle = true;
 
 
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
@@ -149,8 +152,9 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
         canvas.translate(mTranslateX / mScaleFactor, mTranslateY / mScaleFactor);
 
         canvas.drawBitmap(mBitmap, 0, 0, null);
-        canvas.drawRect(200, 200, 400, 400, mPaint);
-        canvas.drawCircle(400,400,100, mPaint);
+
+        canvas.drawRect(200, 200, 800, 800, mPaint);
+     //   canvas.drawCircle(400,400,100, mPaint);
 
         canvas.restore();
 
@@ -173,6 +177,9 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
             mImageWidth = displayMetrics.widthPixels;
             mImageHeight = Math.round(aspectRatio * mImageWidth);
             mBitmap = Bitmap.createScaledBitmap(bitmap, mImageWidth, mImageHeight, false);
+            mPaint.setColor(mColorRectangle);
+            mPaint.setStyle(Paint.Style.STROKE);
+            mPaint.setStrokeWidth(10);
             invalidate();
             requestLayout();
         } catch (IOException e) {
@@ -181,31 +188,15 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
     }
 
     public void loadFrame(View view){
-  /*      int vWidth = view.getWidth();
-        int vHeight = view.getHeight();
-        int halfWidth = vWidth / 2;
-        int halfHeight = vHeight / 2;
-        // Only do this first time view is clicked after it has been created.
-        if (mOffset == OFFSET) { // Only true once, so don't need separate flag.
-            // Each pixel takes 4 bytes, with alpha channel.
-            // Use RGB_565 if you don't need alpha and a huge color palette.
-            mBitmap = Bitmap.createBitmap(
-                    vWidth, vHeight, Bitmap.Config.ARGB_8888);
 
-        mBitmapGraphics = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
-     //   mBitmapGraphics = Bit
-
-        for(int x = 0; x < 100; x++)
-        {
-            for(int y = 0; y < 100; y++)
-            {
-                mBitmapGraphics.setPixel(x, y, android.support.v7.appcompat.R.color.material_blue_grey_800);
-            }
+        if (mtoggle==true) {
+            mtoggle = false;
+            mPaint.setColor(Color.parseColor("#FF00FF00"));
         }
-*/
-
-
-        mPaint.setColor(mColorRectangle);
+        else {
+            mtoggle = true;
+            mPaint.setColor(Color.parseColor("#0000FF00"));
+        }
 
         invalidate();
         requestLayout();
