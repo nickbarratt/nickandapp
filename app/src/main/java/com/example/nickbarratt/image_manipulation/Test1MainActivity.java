@@ -71,9 +71,22 @@ public class Test1MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Toast.makeText(getApplicationContext(), "saving", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        Toast.makeText(getApplicationContext(), "restore", Toast.LENGTH_SHORT).show();
+    }
+
     public void btnClick(View v){
 
-        Toast.makeText(getApplicationContext(), "Button Pressed", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getApplicationContext(), "Button Pressed", Toast.LENGTH_SHORT).show();
         loadFrameGraphics(v);
     }
 

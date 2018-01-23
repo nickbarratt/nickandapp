@@ -65,7 +65,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
     private int mColorAccent;
     private boolean mtoggle = true;
 
-
+/*
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
 
         @Override
@@ -79,11 +79,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
     }
 
 
-    public PinchZoomImageView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
 
-        mScaleGestureDetector = new ScaleGestureDetector(getContext(), new ScaleListener());
-    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -129,6 +125,13 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
                 Math.min(imageHeight,scaledHeight)
         );
     }
+*/
+
+    public PinchZoomImageView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+
+   //     mScaleGestureDetector = new ScaleGestureDetector(getContext(), new ScaleListener());
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -136,7 +139,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
         super.onDraw(canvas);
 
         canvas.save();
-
+/*
         canvas.scale(mScaleFactor, mScaleFactor);
         if ((mTranslateX * -1) < 0) {
             mTranslateX = 0;
@@ -150,7 +153,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
         }
 
         canvas.translate(mTranslateX / mScaleFactor, mTranslateY / mScaleFactor);
-
+*/
         canvas.drawBitmap(mBitmap, 0, 0, null);
 
         canvas.drawRect(200, 200, 800, 800, mPaint);
