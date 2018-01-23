@@ -147,13 +147,8 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
         }
 
         canvas.translate(mTranslateX / mScaleFactor, mTranslateY / mScaleFactor);
-     //   canvas.drawLine(10, 10, 90, 10, null);
-      //  Bitmap mergedImg= mergeMultiple(mBitmap, mBitmapGraphics);
         canvas.drawBitmap(mBitmap, 0, 0, null);
-
         canvas.drawCircle(400, 400, 100, mPaint);
-         //       halfWidth, halfHeight, halfWidth / 3, mPaint);
-    //    canvas.drawBitmap(mBitmapGraphics, 0, 0, null);
         canvas.restore();
 
 
@@ -166,6 +161,9 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
 
     public void setImageUri(Uri uri) {
         try {
+            mColorBackground = ResourcesCompat.getColor(getResources(), R.color.colorBackground, null);
+            mColorRectangle = ResourcesCompat.getColor(getResources(), R.color.colorRectangle, null);
+            mColorAccent = ResourcesCompat.getColor(getResources(), R.color.colorAccent, null);
             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
             float aspectRatio = (float) bitmap.getHeight() / (float) bitmap.getWidth();
             DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
@@ -202,9 +200,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
             }
         }
 */
-        mColorBackground = ResourcesCompat.getColor(getResources(), R.color.colorBackground, null);
-        mColorRectangle = ResourcesCompat.getColor(getResources(), R.color.colorRectangle, null);
-        mColorAccent = ResourcesCompat.getColor(getResources(), R.color.colorAccent, null);
+
 
         mPaint.setColor(mColorBackground);
 
