@@ -132,7 +132,7 @@ public class Test1MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-     //   super.onBackPressed();
+        super.onBackPressed();
 
         Intent intent=new Intent(this, Test1MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -156,17 +156,6 @@ public class Test1MainActivity extends AppCompatActivity {
 
     private void loadFrameGraphics(View v) {
         mPinchZoomImageView.loadFrame(v);
-        //   Bitmap mBitmapGraphics = BitmapFactory.decodeResource(getResources(),R.drawable.img1);//assign your bitmap;
-        /*Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(),R.drawable.img2);//assign your bitmap;
-        Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(),R.drawable.img3);//assign your bitmap;
-        Bitmap bitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.img4);//assign your bitmap;
-
-
-        Bitmap[] listBmp= {bitmap1, bitmap2, bitmap3, bitmap4};
-
-        Bitmap mergedImg= mergeMultiple(listBmp);
-
-        img.setImageBitmap(mergedImg);*/
     }
 
 }
