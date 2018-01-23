@@ -17,6 +17,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +40,9 @@ public class Test1MainActivity extends AppCompatActivity {
     private int mLongAnimationDuration;
     private Button mButton;
     private ShapeDrawable mDrawable;
+
+
+
    // private Canvas mCanvas;
 
     private static final int REQUEST_OPEN_RESULT_CODE = 0;
@@ -51,6 +55,8 @@ public class Test1MainActivity extends AppCompatActivity {
         mImageView = findViewById(R.id.imageView);
         mPinchZoomImageView = findViewById(R.id.pinchZoomImageView);
         mButton = findViewById(R.id.button);
+
+
 
    /*     mButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -81,7 +87,7 @@ public class Test1MainActivity extends AppCompatActivity {
     public void btnClick(View v){
 
         Toast.makeText(getApplicationContext(), "Button Pressed", Toast.LENGTH_SHORT).show();
-        loadFrameGraphics();
+        loadFrameGraphics(v);
     }
 
     @Override
@@ -216,8 +222,8 @@ public class Test1MainActivity extends AppCompatActivity {
         mPinchZoomImageView.setVisibility(View.VISIBLE);
     }
 
-    private void loadFrameGraphics() {
-        mPinchZoomImageView.loadFrame();
+    private void loadFrameGraphics(View v) {
+        mPinchZoomImageView.loadFrame(v);
         //   Bitmap mBitmapGraphics = BitmapFactory.decodeResource(getResources(),R.drawable.img1);//assign your bitmap;
         /*Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(),R.drawable.img2);//assign your bitmap;
         Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(),R.drawable.img3);//assign your bitmap;
