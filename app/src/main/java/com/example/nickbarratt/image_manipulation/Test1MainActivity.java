@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -35,7 +36,7 @@ public class Test1MainActivity extends AppCompatActivity {
 
     private ImageView mImageView;
     private com.example.nickbarratt.image_manipulation.PinchZoomImageView mPinchZoomImageView;
-    private Uri mImageUri;
+    private Uri mImageUri, mStoreImageUri;
     private Animator mCurrentAnimator;
     private int mLongAnimationDuration;
     private Button mButton;
@@ -64,24 +65,56 @@ public class Test1MainActivity extends AppCompatActivity {
 
         mLongAnimationDuration = getResources().getInteger(android.R.integer.config_longAnimTime);
 
+   //     Toast.makeText(getApplicationContext(),"OnCreate()", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("image/*");
         startActivityForResult(intent, REQUEST_OPEN_RESULT_CODE);
-
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Toast.makeText(getApplicationContext(), "saving", Toast.LENGTH_SHORT).show();
+    //    Toast.makeText(getApplicationContext(),"onSaveInstanceState", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+     //   Toast.makeText(getApplicationContext(),"onResume()", Toast.LENGTH_LONG).show();
+        mImageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                //zoomImageFromThumb();
+                //Toast.makeText(getApplicationContext(),"Image View Long Pressed", Toast.LENGTH_SHORT).show();
+                pinchZoomPan();
+                return true;
+            }
+        });
+
+        if (mStoreImageUri != null)
+            mImageUri = mStoreImageUri;
+        Glide.with(this) // with Glide - separate thread - more memory efficient and runs faster
+                .load(mImageUri)
+                .into(mImageView);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
-        Toast.makeText(getApplicationContext(), "restore", Toast.LENGTH_SHORT).show();
+    //    Toast.makeText(getApplicationContext(),"onRestoreInstanceState", Toast.LENGTH_LONG).show();
     }
 
     public void btnClick(View v){
@@ -113,6 +146,8 @@ public class Test1MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_OPEN_RESULT_CODE && resultCode == RESULT_OK) {
             if (resultData != null) {
                 mImageUri = resultData.getData();
+              //  Toast.makeText(getApplicationContext(),"onActivityResult", Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getApplicationContext(), "onActivityResult", Toast.LENGTH_SHORT).show();
                 /*
                 try {
                     Bitmap bitmap = getBitmapFromUri(uri);
