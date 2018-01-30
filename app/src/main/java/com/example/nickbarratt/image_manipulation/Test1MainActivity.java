@@ -40,7 +40,6 @@ public class Test1MainActivity extends AppCompatActivity {
     private Animator mCurrentAnimator;
     private int mLongAnimationDuration;
     private Button mButton;
-    private ShapeDrawable mDrawable;
 
     private static final int REQUEST_OPEN_RESULT_CODE = 0;
 
@@ -173,14 +172,6 @@ public class Test1MainActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     //    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-    }
-
-    private Bitmap getBitmapFromUri(Uri uri) throws IOException {
-        ParcelFileDescriptor parcelFileDescriptor = getContentResolver().openFileDescriptor(uri, "r" );
-        FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
-        Bitmap bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor);
-        parcelFileDescriptor.close();
-        return bitmap;
     }
 
     private void pinchZoomPan() {
