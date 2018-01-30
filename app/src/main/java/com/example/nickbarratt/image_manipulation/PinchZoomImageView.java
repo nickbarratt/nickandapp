@@ -63,7 +63,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
     private int mColorBackground;
     private int mColorRectangle;
     private int mColorAccent;
-    private boolean mtoggle = true;
+    private boolean mtoggle = false;
 
 /*
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
@@ -156,7 +156,7 @@ public class PinchZoomImageView extends android.support.v7.widget.AppCompatImage
 */
         canvas.drawBitmap(mBitmap, 0, 0, null);
 
-        canvas.drawRect(200, 200, 800, 800, mPaint);
+        canvas.drawRect(200, 200, 1200, 1980, mPaint);
      //   canvas.drawCircle(400,400,100, mPaint);
 
         canvas.restore();
